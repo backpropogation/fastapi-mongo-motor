@@ -1,0 +1,11 @@
+FROM python:3.8
+
+RUN apt-get update && apt-get install fonts-liberation netcat openssl libssl-dev libffi-dev wkhtmltopdf libgdal-dev postgis -y && apt-get autoremove -y && apt-get clean
+
+RUN mkdir /server
+WORKDIR /server
+
+COPY ./requirements.txt /server/
+RUN pip install -r requirements.txt
+COPY ./server /server
+COPY ./load_employees.py /server/load_employees.py

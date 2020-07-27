@@ -1,0 +1,38 @@
+version: '3.4'
+
+x-server-tmpl: &server-tmpl
+  environment:
+    DEBUG: 'True'
+    MONGO_INITDB_ROOT_USERNAME: mongo_user
+    MONGO_INITDB_ROOT_PASSWORD: mongo_pwd
+    MONGO_DB_NAME: my_db
+    MONGO_PASSWORD: mongo_pwd
+    VERSION: 1.0
+    PROJECT_TITLE: title
+    APP_NAME: My first FastAPI application
+    MONGO_URL: mongodb://mongo_user:mongo_pwd@mongo:27017/
+    MAX_POOL_SIZE: 200
+    MIN_POOL_SIZE: 100
+
+
+
+services:
+    server:
+      build:
+        context: ./
+        dockerfile: ./docker/Dockerfile.local
+      command: uvicorn main:app --reload --host 0.0.0.0 --port 8000
+      volumes:
+        - ./server:/server
+        - ./load_employees.py:/server/load_employees.py
+        - ./fixtures:/server/fixtures
+      ports:
+        - "8000:8000"
+      depends_on:
+        - mongo
+      <<: *server-tmpl
+
+    mongo:
+      image: mongo
+      <<: *server-tmpl
+
