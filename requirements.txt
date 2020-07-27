@@ -1,6 +1,7 @@
 fastapi==0.60.1
 uvicorn==0.11.6 # asgi server
 pymongo==3.10.1 # mongodb driver
-motor
-pytest
+motor==2.1.0 # async driver
+pytest==5.4.3 # testing tools
 requests # dependency for testing
+loguru==0.5.1 # logging
