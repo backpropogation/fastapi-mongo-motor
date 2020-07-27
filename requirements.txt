@@ -3,5 +3,5 @@ uvicorn==0.11.6 # asgi server
 pymongo==3.10.1 # mongodb driver
 motor==2.1.0 # async driver
 pytest==5.4.3 # testing tools
-requests # dependency for testing
+requests==2.24.0 # dependency for testing
 loguru==0.5.1 # logging

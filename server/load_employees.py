@@ -10,7 +10,7 @@ from db.connect import close_mongo_connection, get_database_connection, connect_
 async def do_insert():
     settings = get_settings()
     await connect_to_mongo()
-    with open('fixtures/employees.json') as file:
+    with open('./fixtures/employees.json') as file:
         json_file = json.load(file)
         client = await get_database_connection()
         employees = [Employee(**item).dict() for item in json_file]
