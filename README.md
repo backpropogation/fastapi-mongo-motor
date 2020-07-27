@@ -2,7 +2,7 @@
 ## Небольшое веб-приложение на основе MongoDB, FastAPI, pydantic и motor
 ### Установка
 - Установите [docker](https://docs.docker.com/engine/install/)
-- Установите [docker-compose](https://docs.docker.com/compose/install/
+- Установите [docker-compose](https://docs.docker.com/compose/install/)
 - `pip install 'fabric<2.0'`
 - `docker-compose build`
 - `fab dev` 
