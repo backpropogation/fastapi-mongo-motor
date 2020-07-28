@@ -3,6 +3,7 @@ from typing import Optional, Any
 
 from pydantic import BaseModel, root_validator
 
+from apps.api.enums import SortEnum
 from apps.api.filters import FilterExpressionBuilder
 
 
@@ -28,8 +29,10 @@ class EmployeeFilterParams(BaseModel):
     salary_gt: Optional[int] = None
 
     gender: Optional[str] = None
+
     sort_by: Optional[str] = None
 
+    sorting_order: Optional[SortEnum] = SortEnum.ASC
 
 class EmployeeFilterExpressionBuilder(FilterExpressionBuilder, EmployeeFilterParams):
     main_fields: tuple = ('age', 'name', 'job_title', 'company', 'salary', 'gender', 'join_date', "email")

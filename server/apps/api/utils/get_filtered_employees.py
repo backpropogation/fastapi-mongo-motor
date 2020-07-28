@@ -27,7 +27,7 @@ async def get_filtered_employees(filter_params: EmployeeFilterParams,
         filter_expr
     )
     if sort_by:
-        rows = rows.sort(sort_by, pymongo.DESCENDING)  # TODO ADD dynamic asc/desc
+        rows = rows.sort(sort_by, builder.sorting_order)
     return ManyEmployeeInDb(
         count=employees_count,
         employees=[EmployeeInDb(**row) async for row in rows],

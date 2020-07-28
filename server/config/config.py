@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     max_pool_size: int
     min_pool_size: int
     default_page_size: int = 30
+    default_page: int = 1
     min_page_size: int = 10
 
 

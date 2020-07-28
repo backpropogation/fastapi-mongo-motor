@@ -4,6 +4,8 @@ from pydantic import BaseModel, validator
 
 from config import get_settings
 
+settings = get_settings()
+
 
 class EmployeePaginationQueryParams(BaseModel):
     page_size: Optional[int] = 30
@@ -11,7 +13,6 @@ class EmployeePaginationQueryParams(BaseModel):
 
     @validator('page_size')
     def check_page_size(cls, v) -> int:
-        settings = get_settings()
         if settings.min_page_size <= v <= settings.default_page_size:
             return v
         return settings.default_page_size
@@ -19,5 +20,5 @@ class EmployeePaginationQueryParams(BaseModel):
     @validator('page')
     def check_page(cls, v) -> int:
         if v < 1:
-            return v
+            return settings.default_page
         return v
