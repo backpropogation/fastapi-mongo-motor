@@ -16,7 +16,13 @@
 * Эндпоинт может принимать следующие аргументы для пагинации в query params:
   * `page, page_size` 
   * `10 <= page_size <= 30`
+  * `page => 1`
+
 * Эндпоинт принимает следующие аргументы в query params для сортировки результатов:
-  * `sort_by`
-  * Пример: `http://0.0.0.0:8000/api/?age_gt=22&age_lt=33&sort_by=name`
+  * `sort_by` - поле сортировки, доступные поля `age,name, job_title, company, salary, gender, join_date , email`
+    * Пример: `http://0.0.0.0:8000/api/?age_gt=22&age_lt=33&sort_by=name`
+  * `sorting_order` - поле для сортировки по возрастанию/убыванию, доступные значения:
+    * `sorting_order=1` - по возрастанию
+    * `sorting_order=-1` - по убыванию
+
   
