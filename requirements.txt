@@ -1,5 +1,5 @@
 fastapi==0.60.1
-uvicorn==0.11.6 # asgi server
+uvicorn==0.11.7 # asgi server
 pymongo==3.10.1 # mongodb driver
 motor==2.1.0 # async driver
 pytest==5.4.3 # testing tools
